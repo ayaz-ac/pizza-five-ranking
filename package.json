@@ -2,6 +2,7 @@
   "name": "pizza_five_ranking",
   "private": true,
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.15.3",
     "@rails/actioncable": "^6.0.0",
     "@rails/activestorage": "^6.0.0",
     "@rails/ujs": "^6.0.0",
@@ -9,6 +10,7 @@
     "@tailwindcss/forms": "^0.3.3",
     "autoprefixer": "^9",
     "postcss": "^7",
+    "stimulus": "^2.0.0",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat",
     "turbolinks": "^5.2.0"
   },
