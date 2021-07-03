@@ -2,5 +2,7 @@
 
 # Home Controller
 class HomeController < ApplicationController
-  def index; end
+  def index
+    @pizzas = Pizza.limit(15)
+  end
 end
