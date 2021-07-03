@@ -1,6 +1,8 @@
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 
-// Custom styles here
+* {
+  font-family: "Nunito", sans-serif;
+}
 
 @import "tailwindcss/utilities";
