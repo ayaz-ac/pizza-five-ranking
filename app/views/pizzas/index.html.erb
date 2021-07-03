@@ -1,9 +1,12 @@
-<div class="lg:grid lg:grid-cols-5">
-  <div class="hidden lg:flex"></div>
-  <div class="lg:flex lg:flex-col lg:items-center lg:min-w-full lg:col-start-2 lg:col-span-3 md:px-3">
-    <% @pizzas.each do |pizza| %>
+<div data-controller="pizza-search">
+  <%= render partial: 'search_bar' %>
+  <div class="lg:grid lg:grid-cols-5">
+    <div class="hidden lg:flex"></div>
+    <div class="lg:flex lg:flex-col lg:items-center lg:min-w-full lg:col-start-2 lg:col-span-3 md:px-3" data-pizza-search-target="pizzas">
+      <% @pizzas.each do |pizza| %>
       <%= render partial: 'pizza_card', locals: { pizza: pizza } %>
-    <% end %>
+      <% end %>
+    </div>
+    <div class="hidden lg:flex"></div>
   </div>
-  <div class="hidden lg:flex"></div>
 </div>
