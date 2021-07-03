@@ -3,6 +3,15 @@
 # Pizzas Controller
 class PizzasController < ApplicationController
   def index
-    @pizzas = Pizza.all
+    @pizzas = if params[:query].present?
+                Pizza.where('title like ?', "%#{params[:query]}%")
+              else
+                Pizza.all
+              end
+
+    respond_to do |format|
+      format.html
+      format.json { render json: { pizzas: @pizzas } }
+    end
   end
 end
