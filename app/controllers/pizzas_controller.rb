@@ -4,7 +4,7 @@
 class PizzasController < ApplicationController
   def index
     @pizzas = if params[:query].present?
-                Pizza.where('title like ?', "%#{params[:query]}%")
+                Pizza.where('title like ?', "%#{params[:query].capitalize}%")
               else
                 Pizza.all
               end
