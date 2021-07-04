@@ -2,9 +2,14 @@
 
 # Pizzas Controller
 class PizzasController < ApplicationController
+  # rubocop:disable Metrics/AbcSize
+  # rubocop:disable Metrics/MethodLength
   def index
-    @pizzas = if params[:query].present?
-                Pizza.where('title like ?', "%#{params[:query].capitalize}%")
+    @sauces = Pizza.sauce_names
+    @pizzas = if params[:title].present?
+                Pizza.where('title like ?', "%#{params[:title].capitalize}%")
+              elsif params[:sauce].present?
+                Pizza.send(params[:sauce])
               else
                 Pizza.all
               end
@@ -14,4 +19,6 @@ class PizzasController < ApplicationController
       format.json { render json: { pizzas: @pizzas } }
     end
   end
+  # rubocop:enable Metrics/MethodLength
+  # rubocop:enable Metrics/AbcSize
 end
