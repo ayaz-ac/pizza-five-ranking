@@ -1,5 +1,5 @@
-<div class="flex justify-center my-5" >
-  <%= form_with(url: pizzas_path, method: :get, html: { data: { action: "submit->pizza-search#search" } }, class: 'flex justify-center w-5/6 md:w-1/2 lg:w-1/3' ) do |f| %>
-  <%= text_field_tag('query', params[:query], data: {'pizza-search-target': 'query' }, placeholder: 'Rerchercher', class: 'w-full border-2 border-gray-300 bg-white rounded-md outline-none focus:outline-none focus:ring focus:ring-purple-400 focus:border-transparent md:text-lg') %>
+<div class="flex justify-center my-5 md:w-1/3 md:mr-2 lg:w-1/4 lg:mr-0">
+  <%= form_with(url: pizzas_path, method: :get, html: { data: { action: "submit->pizza-filter#search" } }, class: 'flex justify-center w-5/6 md:w-full lg:mr-2' ) do |f| %>
+  <%= text_field_tag('title', params[:title], data: {'pizza-filter-target': 'title' }, placeholder: 'Rerchercher', class: 'w-full border-2 border-gray-300 bg-white rounded-md outline-none focus:outline-none focus:ring focus:ring-purple-400 focus:border-transparent md:text-lg') %>
   <% end %>
 </div>
