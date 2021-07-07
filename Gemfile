@@ -7,6 +7,7 @@ ruby '2.7.3'
 
 gem 'bootsnap', '>= 1.4.2', require: false
 gem 'csv'
+gem 'devise'
 gem 'jbuilder', '~> 2.7'
 gem 'pg'
 gem 'puma', '~> 4.1'
