@@ -1,0 +1,19 @@
+fr:
+  activerecord:
+    models:
+      user: Utilisateur
+    attributes:
+      user:
+        password: Mot de passe
+        password_confirmation: Confirmation du mot de passe
+    errors:
+      models:
+        user:
+          attributes:
+            email:
+              blank: vide
+            password:
+              blank: vide
+              too_short: trop court (6 caractères minimum)
+            password_confirmation:
+              confirmation: ne correspond pas
