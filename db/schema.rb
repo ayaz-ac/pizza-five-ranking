@@ -19,7 +19,6 @@ ActiveRecord::Schema.define(version: 2021_07_10_214939) do
 #   Unknown type 'pizza_sauce' for column 'sauce'
 
   create_table "ratings", force: :cascade do |t|
-    t.integer "rating"
     t.bigint "user_id"
     t.bigint "pizza_id"
     t.index ["pizza_id"], name: "index_ratings_on_pizza_id"
