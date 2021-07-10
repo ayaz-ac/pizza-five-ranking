@@ -10,13 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_07_181433) do
+ActiveRecord::Schema.define(version: 2021_07_10_214939) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
 # Could not dump table "pizzas" because of following StandardError
 #   Unknown type 'pizza_sauce' for column 'sauce'
+
+  create_table "ratings", force: :cascade do |t|
+    t.integer "rating"
+    t.bigint "user_id"
+    t.bigint "pizza_id"
+    t.index ["pizza_id"], name: "index_ratings_on_pizza_id"
+    t.index ["user_id", "pizza_id"], name: "index_ratings_on_user_id_and_pizza_id", unique: true
+    t.index ["user_id"], name: "index_ratings_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
