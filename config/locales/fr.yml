@@ -12,6 +12,7 @@ fr:
           attributes:
             email:
               blank: vide
+              taken: existe déjà
             password:
               blank: vide
               too_short: trop court (6 caractères minimum)
