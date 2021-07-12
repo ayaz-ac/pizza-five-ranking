@@ -27,9 +27,6 @@ Inscription
   <div class="text-sm">
     <%= link_to 'Se connecter', new_session_path(:user), class: 'font-semibold text-indigo-600 text-sm md:text-lg' %>
   </div>
-  <div class="text-sm">
-    <%= link_to 'Mot de passe oublié ?', new_password_path(:user), class: 'font-medium text-indigo-600 text-sm md:text-lg' %>
-  </div>
 </div>
 <%= render partial: 'devise/partials/submit_btn', locals: {submit_text: "S'inscrire"} %>
 <% end %>
