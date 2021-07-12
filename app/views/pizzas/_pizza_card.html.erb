@@ -8,9 +8,9 @@
         <% if user_signed_in? %>
         <%= hidden_field_tag 'user_id', current_user.id, 'data-pizza-rating-target': 'userId' %>
         <%= hidden_field_tag 'pizza_id', pizza.id, 'data-pizza-rating-target': 'pizzaId' %>
-        <button class="w-10 bg-pink-500 hover:bg-pink-600 rounded-full text-lg text-white font-semibold" data-action="click->pizza-rating#decrease">-</button>
+        <button class="btn-minus w-10 bg-pink-500 disabled:opacity-50 hover:bg-pink-600 rounded-full text-lg text-white font-semibold" data-action="click->pizza-rating#decrease" <%= already_rated_negatively(pizza) || (pizza.score == 0) ? 'disabled' : '' %>>-</button>
         <span class="text-lg text-gray-800 mx-3" data-pizza-rating-target="score"><%= pizza.score %></span>
-        <button class="w-10 bg-blue-500 hover:bg-blue-600 rounded-full text-lg text-white font-semibold" data-action="click->pizza-rating#increase">+</button>
+        <button class="btn-plus w-10 bg-blue-500 disabled:opacity-50 hover:bg-blue-600 rounded-full text-lg text-white font-semibold" data-action="click->pizza-rating#increase" <%= already_rated_postively(pizza) ? 'disabled' : '' %>>+</button>
         <% else %>
         <span class="text-lg text-gray-800 mx-3" data-pizza-rating-target="score"><%= pizza.score %></span>
         <% end %>

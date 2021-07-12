@@ -3,12 +3,22 @@ import { Controller } from "stimulus";
 export default class extends Controller {
   static targets = ["score", "pizzaId"];
 
-  increase() {
-    this.updateRating("+");
+  decrease(e) {
+    this.updateRating("-");
+    this.disableButton(e,'btn-plus');
   }
 
-  decrease() {
-    this.updateRating("-");
+  increase(e) {
+    this.updateRating("+");
+    this.disableButton(e,'btn-minus');
+  }
+
+  disableButton(e, otherBtn) {
+    e.preventDefault();
+    // Disable the clicked button
+    e.target.disabled = true;
+    // Enable the other button
+    e.target.parentElement.querySelector(`.${otherBtn}`).disabled = false;
   }
 
   updateRating(rating) {
