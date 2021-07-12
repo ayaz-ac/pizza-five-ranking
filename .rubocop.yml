@@ -1,0 +1,42 @@
+inherit_from: .rubocop_todo.yml
+
+AllCops:
+  NewCops: disable
+  Exclude:
+    - '**/*.erb'
+    - vendor/bundle/**/*
+    - node_modules/**/*
+    - db/schema.rb
+  TargetRubyVersion: 2.7.3
+
+Layout/LineLength:
+  # Max: 90
+  Exclude:
+    - db/migrate/*.rb
+    - config/initializers/*.rb
+    - config/routes.rb
+    - Gemfile
+    - Rakefile
+
+Metrics/MethodLength:
+  Exclude:
+    - db/migrate/*.rb
+
+Metrics/AbcSize:
+  Exclude:
+    - db/migrate/*.rb
+
+Metrics/BlockLength:
+  Exclude:
+    - 'Rakefile'
+    - 'Guardfile'
+    - '**/*.rake'
+    - 'test/**/*.rb'
+    - 'spec/**/*.rb'
+    - config/routes.rb
+    - db/seeds.rb
+
+Style/DateTime:
+  Enabled: false
+Style/Documentation:
+  Enabled: false

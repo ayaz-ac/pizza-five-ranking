@@ -1,9 +1,7 @@
 # frozen_string_literal: true
 
-# Pizzas Controller
 class PizzasController < ApplicationController
   # rubocop:disable Metrics/AbcSize
-  # rubocop:disable Metrics/MethodLength
   def index
     @sauces = Pizza.sauce_names
     @pizzas = if params[:title].present?
@@ -20,6 +18,5 @@ class PizzasController < ApplicationController
       format.json { render json: { pizzas: @pizzas } }
     end
   end
-  # rubocop:enable Metrics/MethodLength
   # rubocop:enable Metrics/AbcSize
 end

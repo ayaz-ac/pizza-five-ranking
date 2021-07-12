@@ -1,10 +1,9 @@
 # frozen_string_literal: true
 
-# Pizza model
 class Pizza < ApplicationRecord
   enum sauce: { tomate: 'tomate', creme_fraiche: 'creme_fraiche', originale: 'originale' }
 
-  has_many :ratings
+  has_many :ratings, dependent: :destroy
 
   before_save :avoid_negative_score
 
