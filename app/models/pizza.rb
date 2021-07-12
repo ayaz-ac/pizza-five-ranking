@@ -6,6 +6,12 @@ class Pizza < ApplicationRecord
 
   has_many :ratings
 
+  before_save :avoid_negative_score
+
+  def avoid_negative_score
+    self.score = 0 if score.negative?
+  end
+
   def self.sauce_names
     {
       'tomate': 'Tomate',

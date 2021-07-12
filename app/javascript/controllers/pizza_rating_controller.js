@@ -1,18 +1,34 @@
 import { Controller } from "stimulus";
 
 export default class extends Controller {
-  static targets = ["score"];
+  static targets = ["score", "pizzaId"];
 
   increase() {
-    let score = parseInt(this.scoreTarget.innerHTML, 10);
-    score++;
-    this.scoreTarget.innerHTML = score;
+    this.updateRating("+");
   }
 
   decrease() {
-    let score = parseInt(this.scoreTarget.innerHTML, 10);
-    score--;
-    if (score < 0) score = 0;
-    this.scoreTarget.innerHTML = score;
+    this.updateRating("-");
+  }
+
+  updateRating(rating) {
+    const data = {
+      pizza_id: this.pizzaIdTarget.value,
+      rating: rating,
+    };
+    return fetch("/ratings", {
+      method: "POST",
+      headers: {
+        accept: "application/json",
+        "X-CSRF-Token": document
+          .querySelector('meta[name="csrf-token"]')
+          .getAttribute("content"),
+      },
+      body: JSON.stringify(data),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        this.scoreTarget.innerHTML = data['score']
+      });
   }
 }

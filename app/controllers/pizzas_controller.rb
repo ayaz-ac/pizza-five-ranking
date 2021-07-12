@@ -13,6 +13,7 @@ class PizzasController < ApplicationController
               else
                 Pizza.all
               end
+    @pizzas = @pizzas.order(score: :desc)
 
     respond_to do |format|
       format.html

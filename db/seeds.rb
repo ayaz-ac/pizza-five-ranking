@@ -26,3 +26,11 @@ create_pizza('creme_fraiche', 'creme_fraiche')
 
 # Create originale pizzas
 create_pizza('sauce_originale', 'originale')
+
+warn '==> Seeding User'
+
+# Create user
+User.create!(
+  email: 'user@example.com',
+  password: 'password'
+)

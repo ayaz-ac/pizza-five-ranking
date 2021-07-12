@@ -47,7 +47,8 @@ CREATE TABLE public.pizzas (
     img_url text,
     created_at timestamp(6) without time zone NOT NULL,
     updated_at timestamp(6) without time zone NOT NULL,
-    sauce public.pizza_sauce
+    sauce public.pizza_sauce,
+    score integer DEFAULT 0
 );
 
 
@@ -76,9 +77,9 @@ ALTER SEQUENCE public.pizzas_id_seq OWNED BY public.pizzas.id;
 
 CREATE TABLE public.ratings (
     id bigint NOT NULL,
-    rating character varying NOT NULL,
-    user_id bigint,
-    pizza_id bigint,
+    value character varying NOT NULL,
+    user_id bigint NOT NULL,
+    pizza_id bigint NOT NULL,
     created_at timestamp(6) without time zone NOT NULL,
     updated_at timestamp(6) without time zone NOT NULL
 );
@@ -276,6 +277,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20210702155924'),
 ('20210702161532'),
 ('20210707181433'),
-('20210710214939');
+('20210710214939'),
+('20210712170609');
 
 
