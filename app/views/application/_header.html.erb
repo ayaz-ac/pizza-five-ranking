@@ -9,7 +9,7 @@
     </div>
 
     <div class="hidden md:flex flex-col md:flex-row md:ml-auto mt-3 md:mt-0" id="navbar-collapse">
-      <a href="https://hunt-alternance.com" target="_blank" class="p-2 lg:px-4 md:mx-2 text-indigo-600 text-center border border-transparent rounded hover:bg-indigo-100 hover:text-indigo-700 transition-colors duration-300">Trouve ton alternance</a>
+      <a href="https://hunt-alternance.com" target="_blank" class="p-2 lg:px-4 md:mx-2 text-indigo-600 text-center border border-transparent rounded hover:bg-indigo-100 hover:text-indigo-700 transition-colors duration-300">🎯 Trouve ton alternance</a>
       <% unless user_signed_in? %>
       <%= link_to 'Connexion', new_user_session_path, class: 'p-2 lg:px-4 md:mx-2 text-indigo-600 text-center border border-transparent rounded hover:bg-indigo-100 hover:text-indigo-700 transition-colors duration-300' %>
       <%= link_to "S'inscrire", new_user_registration_path, class: 'p-2 lg:px-4 md:mx-2 text-white text-center bg-indigo-500 rounded hover:bg-indigo-600 mt-1 md:mt-0 transition-colors duration-300' %>

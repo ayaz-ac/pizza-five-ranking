@@ -22,9 +22,6 @@ Connexion
   <div class="text-sm">
     <%= link_to "S'inscrire", new_registration_path(resource_name), class: 'font-semibold text-indigo-600 text-sm md:text-lg' %>
   </div>
-  <div class="text-sm">
-    <%= link_to 'Mot de passe oublié ?', new_password_path(:user), class: 'font-medium text-indigo-600 text-sm md:text-lg' %>
-  </div>
 </div>
 <%= render partial: 'devise/partials/submit_btn', locals: {submit_text: 'Se connecter'} %>
 <% end %>
