@@ -6,11 +6,13 @@
     <div class="p-8">
       <div class="flex flex-row mb-5 items-center">
         <% if user_signed_in? %>
-        <button class="w-10 bg-pink-500 hover:bg-pink-600 rounded-full text-lg text-white font-semibold" data-action="click->pizza-rating#decrease">-</button>
-        <span class="text-lg text-gray-800 mx-3" data-pizza-rating-target="score">0</span>
-        <button class="w-10 bg-blue-500 hover:bg-blue-600 rounded-full text-lg text-white font-semibold" data-action="click->pizza-rating#increase">+</button>
+        <%= hidden_field_tag 'user_id', current_user.id, 'data-pizza-rating-target': 'userId' %>
+        <%= hidden_field_tag 'pizza_id', pizza.id, 'data-pizza-rating-target': 'pizzaId' %>
+        <button class="btn-minus w-10 bg-pink-500 disabled:bg-gray-200 disabled:text-gray-500 hover:bg-pink-600 rounded-full text-lg text-white font-semibold" data-action="click->pizza-rating#decrease" <%= already_rated_negatively(pizza) || (pizza.score == 0) ? 'disabled' : '' %>>-</button>
+        <span class="text-lg text-gray-800 mx-3" data-pizza-rating-target="score"><%= pizza.score %></span>
+        <button class="btn-plus w-10 bg-blue-500 disabled:bg-gray-200 disabled:text-gray-500 hover:bg-blue-600 rounded-full text-lg text-white font-semibold" data-action="click->pizza-rating#increase" <%= already_rated_postively(pizza) ? 'disabled' : '' %>>+</button>
         <% else %>
-        <span class="text-lg text-gray-800 mx-3" data-pizza-rating-target="score">0</span>
+        <span class="text-lg text-gray-800 mx-3" data-pizza-rating-target="score"><%= pizza.score %></span>
         <% end %>
       </div>
       <div class="tracking-wide text-sm text-indigo-500 font-semibold"><%= pizza.sauce.upcase %></div>
