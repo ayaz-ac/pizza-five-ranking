@@ -8,7 +8,7 @@ export default class extends Controller {
   }
 
   filter(event) {
-    this.fetchPizza(`/?sauce=${event.target.value}`);
+    this.fetchPizza(`/?sauce=${event.target.selectedOptions[0].value}`);
   }
 
   fetchPizza(url) {
