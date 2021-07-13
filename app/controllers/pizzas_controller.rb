@@ -15,7 +15,13 @@ class PizzasController < ApplicationController
 
     respond_to do |format|
       format.html
-      format.json { render json: { pizzas: @pizzas } }
+      format.json do
+        render json:
+        {
+          user: user_signed_in?,
+          pizzas: @pizzas
+        }
+      end
     end
   end
   # rubocop:enable Metrics/AbcSize
