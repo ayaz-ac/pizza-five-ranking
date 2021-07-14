@@ -21,7 +21,7 @@ export default class extends Controller {
         let user = data['user'];
         let pizzas = data['pizzas'];
         pizzas.forEach((pizza) => {
-          pizzaHTML += this.pizzaCardTemplate(pizza,user);
+          pizzaHTML += this.pizzaCardTemplate(pizza, user);
         });
         this.pizzasTarget.innerHTML = pizzaHTML;
       });
@@ -50,12 +50,17 @@ export default class extends Controller {
     </div>`;
 
     let middleDiv = "";
-    if (user) {
+    if (user.signedIn) {
+      // Filter ratings only if necessary
+      if (pizza.ratings.length > 0 ) {
+        pizza.ratings = pizza.ratings.filter(rating => rating.user_id === user.id);
+      }
+
       middleDiv = `
       <input type="hidden" value="${pizza.id}" data-pizza-rating-target="pizzaId">
-      <button class="w-10 bg-pink-500 hover:bg-pink-600 rounded-full text-lg text-white font-semibold" data-action="click->pizza-rating#decrease">-</button>
+      <button class="btn-minus w-10 bg-pink-500 disabled:bg-gray-200 disabled:text-gray-500 hover:bg-pink-600 rounded-full text-lg text-white font-semibold" data-action="click->pizza-rating#decrease" ${(pizza.score === 0) || (( pizza.ratings.length > 0) && (pizza.ratings[0].value === '-')) ? 'disabled' : ''}>-</button>
       <span class="text-lg text-gray-800 mx-3 font-bold" data-pizza-rating-target="score">${pizza.score}</span>
-      <button class="w-10 bg-blue-500 hover:bg-blue-600 rounded-full text-lg text-white font-semibold" data-action="click->pizza-rating#increase">+</button>
+      <button class="btn-plus w-10 bg-blue-500 disabled:bg-gray-200 disabled:text-gray-500 hover:bg-blue-600 rounded-full text-lg text-white font-semibold" data-action="click->pizza-rating#increase" ${((pizza.ratings.length > 0) && (pizza.ratings[0].value === '+')) ? 'disabled' : ''}>+</button>
       `;
     } else {
       middleDiv = `
