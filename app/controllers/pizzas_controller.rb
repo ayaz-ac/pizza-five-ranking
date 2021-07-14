@@ -28,6 +28,7 @@ def find_pizzas
 end
 
 def pizzas_json
+  filter_ratings if user_signed_in?
   {
     user: {
       signedIn: user_signed_in?,
@@ -35,4 +36,10 @@ def pizzas_json
     },
     pizzas: @pizzas
   }
+end
+
+def filter_ratings
+  @pizzas.each do |pizza|
+    pizza.ratings.select { |rating| rating.user == current_user }
+  end
 end

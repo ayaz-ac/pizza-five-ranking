@@ -51,11 +51,6 @@ export default class extends Controller {
 
     let middleDiv = "";
     if (user.signedIn) {
-      // Filter ratings only if necessary
-      if (pizza.ratings.length > 0 ) {
-        pizza.ratings = pizza.ratings.filter(rating => rating.user_id === user.id);
-      }
-
       middleDiv = `
       <input type="hidden" value="${pizza.id}" data-pizza-rating-target="pizzaId">
       <button class="btn-minus w-10 bg-pink-500 disabled:bg-gray-200 disabled:text-gray-500 hover:bg-pink-600 rounded-full text-lg text-white font-semibold" data-action="click->pizza-rating#decrease" ${(pizza.score === 0) || (( pizza.ratings.length > 0) && (pizza.ratings[0].value === '-')) ? 'disabled' : ''}>-</button>
