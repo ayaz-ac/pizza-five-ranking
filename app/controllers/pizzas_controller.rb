@@ -4,7 +4,7 @@ class PizzasController < ApplicationController
   def index
     @sauces = Pizza.sauce_names
     @pizzas = find_pizzas
-    @pizzas = @pizzas.order(score: :desc)
+    @pizzas = @pizzas.includes(:ratings).order(score: :desc)
 
     respond_to do |format|
       format.html
@@ -28,6 +28,7 @@ def find_pizzas
 end
 
 def pizzas_json
+  filter_ratings if user_signed_in?
   {
     user: {
       signedIn: user_signed_in?,
@@ -35,4 +36,10 @@ def pizzas_json
     },
     pizzas: @pizzas
   }
+end
+
+def filter_ratings
+  @pizzas.each do |pizza|
+    pizza.ratings.select { |rating| rating.user == current_user }
+  end
 end
