@@ -18,4 +18,15 @@ class Pizza < ApplicationRecord
       'originale': 'Originale'
     }
   end
+
+  def as_json(_options = {})
+    super({
+      except: %i[created_at updated_at],
+      include: {
+        ratings: {
+          only: %i[value user_id]
+        }
+      }
+    })
+  end
 end
