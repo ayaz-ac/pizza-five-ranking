@@ -59,7 +59,9 @@ export default class extends Controller {
       `;
     } else {
       middleDiv = `
+      <button class="btn-minus w-10 bg-pink-500 hover:bg-pink-600 rounded-full text-lg text-white font-semibold" data-action="click->pizza-rating#navigateToLogin">-</button>
       <span class="text-lg text-gray-800 mx-3 font-bold" data-pizza-rating-target="score">${pizza.score}</span>
+      <button class="btn-plus w-10 bg-blue-500 hover:bg-blue-600 rounded-full text-lg text-white font-semibold" data-action="click->pizza-rating#navigateToLogin">+</button>
       `;
     }
 
