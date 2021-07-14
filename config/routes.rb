@@ -6,4 +6,8 @@ Rails.application.routes.draw do
 
   resources :pizzas, only: %i[index]
   resources :ratings, only: %i[create]
+
+  namespace :profile do
+    resources :pizzas, only: %i[index]
+  end
 end
