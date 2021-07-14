@@ -1,0 +1,20 @@
+<div class="min-w-full rounded-md shadow-lg overflow-hidden mt-5 lg:max-w-2xl" data-controller="pizza-rating">
+  <div class="md:flex">
+    <div class="md:flex-shrink-0 bg-gray-50">
+      <%= image_tag(pizza.img_url, class:'h-80 w-full object-cover md:h-full md:w-48', alt: pizza.title.downcase ) %>
+    </div>
+    <div class="p-8">
+      <div class="flex flex-row mb-5 items-center">
+        <% rating = pizza_rating(pizza) %>
+        <% if rating == '+'%>
+          <span class="text-lg text-green-600 mx-3 font-bold" data-pizza-rating-target="score">+ 1</span>
+        <% else %>
+          <span class="text-lg text-red-600 mx-3 font-bold" data-pizza-rating-target="score">- 1</span>
+        <% end %>
+      </div>
+      <div class="tracking-wide text-sm text-indigo-500 font-semibold"><%= pizza.sauce.upcase %></div>
+      <span class="block mt-1 text-lg leading-tight font-medium text-black"><%= pizza.title %></span>
+      <p class="mt-2 text-gray-500"><%= pizza.composition %></p>
+    </div>
+  </div>
+</div>

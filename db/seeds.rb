@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# rubocop:disable Metrics/MethodLength
 def create_pizza(file_name, sauce)
   pizza_five_url = 'https://www.fivepizzaoriginal.com'
   csv_file = File.read("#{Rails.root}/lib/assets/#{file_name}.csv")
@@ -14,7 +13,6 @@ def create_pizza(file_name, sauce)
     )
   end
 end
-# rubocop:enable Metrics/MethodLength
 
 warn '==> Seeding Pizzas'
 

@@ -8,10 +8,8 @@ class Rating < ApplicationRecord
 
   validates :user, uniqueness: { scope: :pizza }
 
-  # rubocop:disable Style/RedundantSelf
   def calculate_score
-    self.value == '+' ? pizza.score += 1 : pizza.score -= 1
+    value == '+' ? pizza.score += 1 : pizza.score -= 1
     pizza.save!
   end
-  # rubocop:enable Style/RedundantSelf
 end

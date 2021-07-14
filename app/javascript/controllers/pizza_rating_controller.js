@@ -13,6 +13,10 @@ export default class extends Controller {
     this.disableButton(e,'btn-minus');
   }
 
+  navigateToLogin(e) {
+    window.location.href = '/users/sign_in';
+  }
+
   disableButton(e, otherBtn) {
     e.preventDefault();
     // Disable the clicked button
