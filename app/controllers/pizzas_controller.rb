@@ -4,7 +4,7 @@ class PizzasController < ApplicationController
   def index
     @sauces = Pizza.sauce_names
     @pizzas = find_pizzas
-    @pizzas = @pizzas.order(score: :desc)
+    @pizzas = @pizzas.includes(:ratings).order(score: :desc)
 
     respond_to do |format|
       format.html
